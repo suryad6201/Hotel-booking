@@ -6,16 +6,23 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "jquery": "^3.6.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start-js": "react-scripts start prefix:css compress:css",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:sass": "sass src/components/sass/main.scss src/global.css -w ",
+    "compile:sass": "sass src/components/sass/main.scss src/style.comp.css ",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 version' src/style.comp.css -o src/style.prefix.css ",
+    "compress:css": "sass src/style.prefix.css src/global.css -s compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css",
+    "start": "npm-run-all -p watch:sass start-js"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +41,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.16",
+    "autoprefixer": "^10.4.13",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^10.1.0",
+    "sass": "^1.57.1"
   }
 }
