@@ -8,4 +8,6 @@ npm start executes watch:sass to watch the compile sass and start-js to run the 
 2. Run "npm run build:css"
 npm run build:css executes compile:sass prefix:css compress:css
 
+Deployed webapp: https://hotel-booking-project.netlify.app/
+
 Thanks.
